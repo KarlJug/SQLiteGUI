@@ -1,11 +1,8 @@
 import tkinter as tk
 from tkinter import ttk
-from DB.QueryDAO import QueryDAO
 
 
 class Add:
-    queryDAO = QueryDAO()
-
     def __init__(self, master, QueryDAO):
         self.master = master
         self.queryDAO = QueryDAO

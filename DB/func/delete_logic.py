@@ -1,7 +1,16 @@
+import tkinter as tk
+from tkinter import ttk
 from DB.QueryDAO import QueryDAO
 
 
 class Delete:
+    def __int__(self, master, QueryDAO, selected_data):
+        self.master = master
+        self.queryDAO = QueryDAO
+        self.selected_data = selected_data
+
+    def selected(self):
+        print("hey delte")
 
     @staticmethod
     def separate_numbers(str_nums):

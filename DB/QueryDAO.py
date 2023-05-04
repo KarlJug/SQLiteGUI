@@ -15,10 +15,6 @@ class QueryDAO:
         self.selected_table = ''
         self.selected_column = ''
 
-    # def ADD(self):
-    #     return f"INSERT INTO {self.table_names} (first_name, last_name, email, car_make, car_model, car_year, car_price) " \
-    #            "VALUES (?, ?, ?, ?, ?, ?, ?)"
-
     @staticmethod
     def validation():
         value = input("(Y)es or (N)o: ")
@@ -29,6 +25,7 @@ class QueryDAO:
 
     def queryAddDataToDatabase(self, id_value):
         try:
+            print("hey")
             connect = DBConnection.connect()
             cursor = connect.cursor()
 

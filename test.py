@@ -1,34 +1,27 @@
 import tkinter as tk
+from tkinter import ttk
 
-class MainWindow:
-    def __init__(self):
-        self.root = tk.Tk()
-        self.root.title("Main Window")
+def on_select(event):
+    item = event.widget.focus()
+    values = event.widget.item(item)['values']
+    print(values)
 
-        # create a list to hold the Entry widgets
-        self.entries = []
+root = tk.Tk()
 
-        # create a label and pack it
-        self.label = tk.Label(self.root, text="Enter some text:")
-        self.label.pack()
+# Create the Treeview widget
+columns = ('Name', 'Age', 'Country')
+tree = ttk.Treeview(root, columns=columns, show='headings')
+for col in columns:
+    tree.heading(col, text=col)
 
-        # create the Entry widgets using a for loop and pack them
-        for i in range(5):
-            entry = tk.Entry(self.root)
-            entry.pack()
-            self.entries.append(entry)
+# Insert some sample data
+data = [('John', 25, 'USA'), ('Emily', 30, 'Canada'), ('Mark', 20, 'UK')]
+for i, row in enumerate(data):
+    tree.insert('', 'end', iid=i, values=row)
 
-        # create a button to submit the Entry values
-        self.button = tk.Button(self.root, text="Submit", command=self.submit_entries)
-        self.button.pack()
+# Bind the on_select function to the TreeviewSelect event
+tree.bind('<<TreeviewSelect>>', on_select)
 
-        # start the main event loop
-        self.root.mainloop()
+tree.pack(expand=True, fill='both')
 
-    def submit_entries(self):
-        # print the value of each Entry widget
-        for entry in self.entries:
-            print(entry.get())
-
-if __name__ == '__main__':
-    main_window = MainWindow()
+root.mainloop()
